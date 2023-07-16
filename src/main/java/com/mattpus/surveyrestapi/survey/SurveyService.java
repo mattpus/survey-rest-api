@@ -48,4 +48,11 @@ public class SurveyService {
         return optionalSurvey.orElse(null);
 
     }
+    public List<Question> retrieveSurveyQuestions(String id) {
+       Survey survey = retrieveSurveyById(id);
+       if(survey==null) return null;
+
+        return survey.getQuestions();
+
+    }
 }
