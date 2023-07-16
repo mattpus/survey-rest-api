@@ -6,17 +6,17 @@ public class Question {
     private String id;
     private String description;
     private List<String> options;
-    private String corrcetAnswer;
+    private String correctAnswer;
 
     public Question() {
 
     }
 
-    public Question(String id, String description, List<String> options, String corrcetAnswer) {
+    public Question(String id, String description, List<String> options, String correctAnswer) {
         this.id = id;
         this.description = description;
         this.options = options;
-        this.corrcetAnswer = corrcetAnswer;
+        this.correctAnswer = correctAnswer;
     }
 
     public String getId() {
@@ -31,8 +31,8 @@ public class Question {
         return options;
     }
 
-    public String getCorrcetAnswer() {
-        return corrcetAnswer;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class Question {
                 "id='" + id + '\'' +
                 ", description='" + description + '\'' +
                 ", options=" + options +
-                ", corrcetAnswer='" + corrcetAnswer + '\'' +
+                ", correctAnswer='" + correctAnswer + '\'' +
                 '}';
     }
 }

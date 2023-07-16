@@ -10,7 +10,6 @@ public class SurveyRestApiApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(SurveyRestApiApplication.class, args);
-
-        System.out.println("hello world!");
+        System.out.println("build successful!");
     }
 }
