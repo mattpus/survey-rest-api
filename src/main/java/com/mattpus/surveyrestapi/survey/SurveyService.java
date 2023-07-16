@@ -85,4 +85,10 @@ public class SurveyService {
         Predicate<? super Question> predicate = q -> q.getId().equalsIgnoreCase(questionId);
         return surveyQuestions.removeIf(predicate);
     }
+
+    public void updateSurveyQuestion(String surveyId, String questionId, Question question) {
+        List<Question> questions = retrieveSurveyQuestions(surveyId);
+        questions.removeIf(q -> q.getId().equalsIgnoreCase(questionId));
+        questions.add(question);
+    }
 }
