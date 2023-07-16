@@ -1,4 +1,4 @@
-package com.mattpus.surveyrestapi.servey;
+package com.mattpus.surveyrestapi.survey;
 
 import java.util.List;
 

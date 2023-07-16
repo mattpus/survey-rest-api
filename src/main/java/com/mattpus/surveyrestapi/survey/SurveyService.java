@@ -1,4 +1,4 @@
-package com.mattpus.surveyrestapi.servey;
+package com.mattpus.surveyrestapi.survey;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ServeyService {
+public class SurveyService {
     private static List<Survey> surveys = new ArrayList<>();
 
     static {
@@ -29,5 +29,9 @@ public class ServeyService {
                 "Description of the Survey", questions);
 
         surveys.add(survey);
+    }
+
+    public List<Survey> retrieveAllSurveys() {
+        return surveys;
     }
 }
