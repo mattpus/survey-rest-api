@@ -2,6 +2,8 @@ package com.mattpus.surveyrestapi.survey;
 
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -52,5 +54,27 @@ public class SurveyService {
         if (survey == null) return null;
 
         return survey.getQuestions();
+    }
+
+    public Question retrieveSpecificSurveyQuestion(String surveyId, String questionId) {
+        List<Question> questions = retrieveSurveyQuestions(surveyId);
+        if(questions == null) return null;
+        Predicate<? super Question> predicate = (question -> question.getId().equalsIgnoreCase(questionId));
+        Optional<Question> question = questions.stream().filter(predicate).findFirst();
+
+        return question.orElse(null);
+    }
+
+    public String addNewSurveyQuestion(String surveyId, Question question) {
+        List<Question> questions = retrieveSurveyQuestions(surveyId);
+        String randomId = generateRandomId();
+        question.setId(randomId);
+        questions.add(question);
+        return question.getId();
+    }
+
+    private static String generateRandomId() {
+        SecureRandom secureRandom = new SecureRandom();
+        return new BigInteger(32, secureRandom).toString();
     }
 }
