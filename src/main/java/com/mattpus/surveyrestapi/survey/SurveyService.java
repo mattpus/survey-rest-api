@@ -58,7 +58,7 @@ public class SurveyService {
 
     public Question retrieveSpecificSurveyQuestion(String surveyId, String questionId) {
         List<Question> questions = retrieveSurveyQuestions(surveyId);
-        if(questions == null) return null;
+        if (questions == null) return null;
         Predicate<? super Question> predicate = (question -> question.getId().equalsIgnoreCase(questionId));
         Optional<Question> question = questions.stream().filter(predicate).findFirst();
 
@@ -76,5 +76,13 @@ public class SurveyService {
     private static String generateRandomId() {
         SecureRandom secureRandom = new SecureRandom();
         return new BigInteger(32, secureRandom).toString();
+    }
+
+    public boolean deleteSurveyQuestion(String surveyId, String questionId) {
+        List<Question> surveyQuestions = retrieveSurveyQuestions(surveyId);
+        if (surveyQuestions == null)
+            return false;
+        Predicate<? super Question> predicate = q -> q.getId().equalsIgnoreCase(questionId);
+        return surveyQuestions.removeIf(predicate);
     }
 }
